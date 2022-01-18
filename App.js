@@ -10,16 +10,28 @@ export default function App() {
 
 
   const cibi = [
-    {id: 1, nome: 'Banana', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 80, categoria: 'frutta'},
-    {id: 2, nome: 'Arancia', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 50, categoria: 'frutta'},
-    {id: 3, nome: 'Prosciutto', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 150, categoria: 'salumi'},
-    {id: 4, nome: 'Pompelmo', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 80, categoria: 'frutta'},
-    {id: 5, nome: 'Melone', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 50, categoria: 'frutta'},
-    {id: 6, nome: 'Salame', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 150, categoria: 'salumi'},
-    {id: 7, nome: 'Ravioli', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 150, categoria: 'pasta'},
-    {id: 8, nome: 'Tortellini', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 150, categoria: 'pasta'},
-    {id: 9, nome: 'Asiago', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 150, categoria: 'formaggi'},
-    {id: 10, nome: 'Gorgonzola', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 150, categoria: 'formaggi'},
+    {id: 1, nome: 'Banana', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 80, categoria: 'frutta', 
+      carboidrati: 20, proteine: 30, grassi: 30, grassiSaturi: 5, sale: 0.1},
+    {id: 2, nome: 'Arancia', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 50, categoria: 'frutta', 
+      carboidrati: 20, proteine: 30, grassi: 30, grassiSaturi: 5, sale: 0.1},
+    {id: 3, nome: 'Prosciutto', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 150, categoria: 'salumi',
+      carboidrati: 20, proteine: 30, grassi: 30, grassiSaturi: 5, sale: 0.1},
+    {id: 4, nome: 'Pompelmo', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 80, categoria: 'frutta',
+      carboidrati: 20, proteine: 30, grassi: 30, grassiSaturi: 5, sale: 0.1},
+    {id: 5, nome: 'Melone', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 50, categoria: 'frutta',
+      carboidrati: 20, proteine: 30, grassi: 30, grassiSaturi: 5, sale: 0.1},
+    {id: 6, nome: 'Salame', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 150, categoria: 'salumi', 
+      carboidrati: 20, proteine: 30, grassi: 30, grassiSaturi: 5, sale: 0.1},
+    {id: 7, nome: 'Ravioli', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 150, categoria: 'pasta',
+      carboidrati: 20, proteine: 30, grassi: 30, grassiSaturi: 5, sale: 0.1},
+    {id: 8, nome: 'Tortellini', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 150, categoria: 'pasta',
+      carboidrati: 20, proteine: 30, grassi: 30, grassiSaturi: 5, sale: 0.1},
+    {id: 9, nome: 'Asiago', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 150, categoria: 'formaggi',
+      carboidrati: 20, proteine: 30, grassi: 30, grassiSaturi: 5, sale: 0.1},
+    {id: 10, nome: 'Gorgonzola', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 150, categoria: 'formaggi',
+      carboidrati: 20, proteine: 30, grassi: 30, grassiSaturi: 5, sale: 0.1},
+    {id: 11, nome: 'Parmigiano', foto: require('./assets/CristianaCapotondi.jpg'), calorie: 250, categoria: 'formaggi',
+      carboidrati: 20, proteine: 40, grassi: 40, grassiSaturi: 15, sale: 0.1},
   ]
   const categorie = [
     {id: 1, nome: 'formaggi'},
@@ -85,26 +97,41 @@ export default function App() {
               //transparent={true}
             >
               <View style={[styles.container, {backgroundColor: 'rgba(255,255,0,0.2)'}]}>
-                <Text>{currentItem.nome}</Text>
+                <Text style={{fontSize: 22, fontWeight: 'bold'}}>{currentItem.nome}</Text>
                 <Text>Calorie: {currentItem.calorie}</Text>
                 <Text>Categoria: {currentItem.categoria}</Text>
+                <View style={{height: 20}}></View>
                       <View style={styles.tabView}>
                         <Text style={{fontWeight: 'bold'}}>Alimento</Text>
+                        <Text style={{fontWeight: 'bold'}}>Carboidrati</Text>
+                        <Text style={{fontWeight: 'bold'}}>Proteine</Text>
+                        <Text style={{fontWeight: 'bold'}}>Grassi</Text>
+                        {/* <Text style={{fontWeight: 'bold'}}>di cui Grassi Saturi</Text>
+                        <Text style={{fontWeight: 'bold'}}>Sale</Text> */}
                         <Text style={{fontWeight: 'bold'}}>Calorie</Text> 
-                        <Text style={{fontWeight: 'bold'}}>Categoria</Text>
+                        {/* <Text style={{fontWeight: 'bold'}}>Categoria</Text> */}
                       </View>
                 {
                   formaggi.map(formaggio =>(
                       <View style={styles.tabView} key={formaggio.id}>
-                        <Text>{formaggio.nome}</Text><Text>{formaggio.calorie}</Text><Text>{formaggio.categoria}</Text>
+                        <Text style={styles.textTitle} >{formaggio.nome}</Text>
+                        <Text style={styles.textView} >{formaggio.carboidrati}</Text>
+                        <Text style={styles.textView}>{formaggio.proteine}</Text>
+                        <Text style={styles.textView} >{formaggio.grassi} ({formaggio.grassiSaturi})</Text>
+                        {/* <Text>{formaggio.grassiSaturi}</Text>
+                        <Text>{formaggio.sale}</Text> */}
+                        <Text style={styles.textView}>{formaggio.calorie}</Text>
+                        {/* <Text>{formaggio.categoria}</Text> */}
                       </View>
 
                   ))
                 }
-                <Button 
-                  title="close"
-                  onPress={()=>setOpen(false)}
-                />
+                <View style={{marginVertical: 10}}>
+                  <Button 
+                    title="close"
+                    onPress={()=>setOpen(false)}
+                  />
+                </View>
               </View>
             </Modal>
           </View>
@@ -162,9 +189,17 @@ const styles = StyleSheet.create({
 
   },
   tabView: {
-    width: '80%',
+    width: '100%',
     flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'space-around'
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  textTitle: {
+    width: '25%',
+    textAlign: 'left'
+  },
+  textView: {
+    width: '15%',
+    textAlign: 'center'
   }
 });
